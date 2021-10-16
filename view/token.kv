@@ -1,0 +1,41 @@
+#:kivy 2.0
+#:kivy 2.0
+
+<TokenScreen>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "resources/background/BACKGROUND.png"
+    FloatLayout:
+        Label:
+            id: token_log
+            size_hint_y: None
+            font_size: "20sp"
+            pos_hint: {"y":0.76, "left":0.500}
+            text: ''
+            color: 1,1,1,0.8
+            bold: "true"
+        TextInput:
+            id: token
+            background_color: (0, 0, 0, 0.3)
+            foreground_color: (1, 1, 1, 1)
+            hint_text: 'Enter Token'
+            pos_hint: {"y":0.52, "right":0.720}
+            multiline: False
+            size_hint: 0.4,None
+            height: "35dp"
+        Button:
+            text: "Add to Database"
+            size_hint: 0.4,None
+            height: "35dp"  
+            pos_hint:{"y":0.44, "right":0.720}
+            on_release: root.enter_token()
+        Button:
+            text: "Back"
+            size_hint: 0.18,None
+            height: "35dp"
+            pos_hint:{"y":0.02, "right":0.20}
+            on_press: 
+                app.root.current = "main_menu_screen"
+                

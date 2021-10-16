@@ -1,0 +1,93 @@
+#:kivy 2.0
+#:kivy 2.0
+
+<AudienceButton@Button>
+    source:None
+    size_hint_x: None
+    size_hint_y:None
+    width: capture_image.width
+    height: capture_image.height
+    background_color: 0,0,0,0
+    Image:
+        id:capture_image
+        source: root.source
+        center_x: self.parent.center_x
+        center_y: self.parent.center_y
+        allow_stretch: "true"
+        width:200
+
+# <RoundTextInput@TextInput>
+
+#         id: audience
+#         hint_text: 'Default Email'
+#         pos_hint: {"y":0.80, "right":0.470}
+#         multiline: False
+#         size_hint: 0.35,None
+#         height: "35dp"
+
+
+<AudienceScreen>:
+    search:search
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "resources/background/BACKGROUND.png"
+    FloatLayout:
+        Label:
+            id: audience_log
+            size_hint_y: None
+            font_size: "20sp"
+            pos_hint: {"y":0.87, "left":0.500}
+            text: ''
+            color: 1,1,1,0.8
+            bold: "true"
+        TextInput:
+            id: keyword
+            background_color: (0, 0, 0, 0.3)
+            foreground_color: (1, 1, 1, 1)
+            hint_text: 'Enter Keyword'
+            pos_hint: {"y":0.80, "right":0.500}
+            multiline: False
+            size_hint: 0.35,None
+            height: "35dp"
+        TextInput:
+            id: output
+            background_color: (0, 0, 0, 0.05)
+            foreground_color: (1, 1, 1, 1)
+            hint_text: 'Audience Console'
+            pos_hint: {"y":0.14, "right":0.710}
+            multiline: True
+            size_hint: 0.48,0.6
+            height: "35dp"
+        AudienceButton:
+            id: search
+            pos_hint:{"y":0.75, "right":0.810}
+            source:"resources/buttons/SEARCH.png"
+            on_press: self.source = "resources/buttons/SEARCH_PRESSED.png"
+            on_press: root.search_audience()
+            on_release: 
+                self.source = "resources/buttons/SEARCH.png"
+        ToggleButton:
+            id: toggler
+            text: "Suggest Mode"
+            pos_hint:{"y":0.43, "right":0.940}
+            size_hint: 0.18,None
+            height: "35dp"   
+        Button:
+            text: "Back"
+            size_hint: 0.18,None
+            height: "35dp"
+            pos_hint:{"y":0.02, "right":0.20}
+            on_press: 
+                app.root.current = "main_menu_screen"
+                root.manager.transition.direction = "right"
+        Button:
+            text: "Refresh Token"
+            size_hint: 0.18,None
+            height: "35dp"
+            pos_hint:{"y":0.02, "right":0.978}
+            on_press: 
+                app.root.current = "token_screen"
+                
+                

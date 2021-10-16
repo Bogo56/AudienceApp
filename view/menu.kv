@@ -1,0 +1,90 @@
+#:kivy 2.0
+#:import RiseInTransition kivy.uix.screenmanager.RiseInTransition
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+#: import SlideTransition kivy.uix.screenmanager.SlideTransition
+#: import FallOutTransition kivy.uix.screenmanager.FallOutTransition
+#: import WipeTransition kivy.uix.screenmanager.WipeTransition
+#: import CardTransition kivy.uix.screenmanager.CardTransition
+
+<MenuButton@Button>
+    source:None
+    size_hint_x: None
+    width: capture_image.width
+    background_color: 0,0,0,0
+    Image:
+        id:capture_image
+        source: root.source
+        center_x: self.parent.center_x
+        center_y: self.parent.center_y
+        allow_stretch: "true"
+        width:359
+        height:
+        
+<ForceButton@ToggleButton>
+    source:None
+    size_hint_x: None
+    size_hint_y:None
+    width: capture_image.width
+    height: capture_image.height
+    background_color: 0,0,0,0
+    Image:
+        id:capture_image
+        source: root.source
+        center_x: self.parent.center_x
+        center_y: self.parent.center_y
+        allow_stretch: "true"
+        width:45
+
+<MainMenuScreen>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "resources/background/BACKGROUND.png"
+    GridLayout:
+        cols:1
+        padding:70,50
+        spacing:30
+        AnchorLayout:
+            anchor_x:"center"
+            MenuButton:
+                source:"resources/buttons/AUDIENCE_TOOL.png"
+                on_press: self.source = "resources/buttons/AUDIENCE_TOOL_PRESSED.png"
+                on_release: 
+                    app.root.current = "audience_screen"
+                    self.source = "resources/buttons/AUDIENCE_TOOL.png"
+        AnchorLayout:
+            anchor_x:"center"
+            MenuButton:
+                source:"resources/buttons/TOKEN_MANAGER.png"
+                on_press: self.source = "resources/buttons/TOKEN_MANAGER_PRESSED.png"
+                on_release:
+                    app.root.current = "token_screen"
+                    self.source = "resources/buttons/TOKEN_MANAGER.png"
+    FloatLayout:
+        Label:
+            id: force_quote
+            size_hint_y: None
+            font_size: "23sp"
+            pos_hint: {"y":0.85, "left":0.500}
+            text: ''
+            color: 1,1,1,0.9
+            bold: "true"
+        ForceButton:
+            id: force_toggler
+            group: "the_force"
+            pos_hint:{"y":0.85, "right":0.10}
+            source:"resources/buttons/Clone.png" 
+            on_state: root.the_force_on() if force_toggler.state == "down" else root.the_force_off()
+            on_press: self.source ="resources/buttons/Drone.png"
+            on_release: self.source = "resources/buttons/Clone.png"
+
+
+<ScreenManager>:
+    transition: WipeTransition(duration=0.2)
+    MainMenuScreen:
+        name:"main_menu_screen"
+    AudienceScreen:
+        name: "audience_screen"
+    TokenScreen:
+        name: "token_screen"
