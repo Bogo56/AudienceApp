@@ -19,7 +19,7 @@ class AudienceManager:
                     audiences = "AUDIENCE  /SIZE/ \n\n"
                     audiences += f"Results found: {len(res['data'])}\n\n"
                     for audience in res["data"]:
-                        audiences += f"{audience['name']}      /{audience['audience_size']} users/\n"
+                        audiences += f"{audience['name']}      /{audience['audience_size_lower_bound']} users/\n"
                     return audiences
                 else:
                     return "No Audiences Found"
@@ -39,7 +39,7 @@ class AudienceManager:
                     audiences = "AUDIENCE / SIZE \n\n"
                     audiences += f"Suggestions found: {len(res['data'])}\n\n"
                     for audience in res["data"]:
-                        audiences += f"{audience['name']}      /{audience['audience_size']} users/\n"
+                        audiences += f"{audience['name']}      /{audience['audience_size_lower_bound']} users/\n"
                     return audiences
                 else:
                     return "No Suggestions Found"
