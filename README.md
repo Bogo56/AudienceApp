@@ -1,10 +1,10 @@
 <h1 align="center">
   <br>
-  <img src="https://res.cloudinary.com/dawb3psft/image/upload/v1647978928/Portfolio/invoices.ico" alt="AdCaptureBot" width="150">
-  <br>InvoicesApp
+  <img src="https://res.cloudinary.com/dawb3psft/image/upload/v1648020431/Portfolio/star.ico" alt="AudienceApp" width="150">
+  <br>AudienceApp
 </h1>
 
-<h4 align="center">Python-Kivy App for automating invoices extraction.</h4>
+<h4 align="center">Python-Kivy App to reveal all targeting interests.</h4>
 
 <p align="center">
   <a href="https://img.shields.io/badge/Made%20with-Python-blue">
@@ -47,115 +47,89 @@
 <img src="https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white">
 </p>
 
-### Additional Libraries and Technologies
-<p>
-  <img src="https://img.shields.io/badge/Tables-Pandas-green?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Web Scrape-Selenium-blue?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Packaging-PyInstaller-blue?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Security-Fernet-blue?style=for-the-badge">
-</p>
-
 ## About The Project
-This was another project that is inspired by **a real-world challenge** that we had at our company. The goal was to **automate the boring** administrative **task** of **downloading and clasifying invoices** at the end of each month. This was very time consuming and repetative, so I really felt that this was a time better spent at more productive activities.
+This is a very simple project, that I created. **The purpose of the app was to improve the process of setting advertising campaigns** in Facebook inside my team. The App communicates with the Facebook API to fetch a full list of targeting options based on a keyword.
 
-## Description of the problem
-At the end of each month all of the invoices for the money spend on advertising had to be downloaded and ordered based on the payment cards being used.There are tens of different ad accounts - each receiving multiple invoices ( depending on the advertising activity for the month). So each invoice has to be downloaded separately and so the cumulative **sum of invoices per month is in the range between 120 and 230**. This **means between 4-7 hours of wasted time** at the end of each month.
+* If you want you can download and unzip the app on your machine. The path to the executable is located at `dist/AudienceAPP/AudienceAPP.exe`
 
-### And the Solution
-I wanted to create a solution that would be **usefull to all my teammates** and not just myself. That's why a simple script was not enough. So I had to create an app that **could be used by anyone and mainly non-coders**. This is how I came up with this project. It basically visits every single ad account, scrapes the datails of every invoice for that account and then injects that into an Excel File, creating a spreadsheet for the separate ad account.
+## Description of the project
+Each campaign in Facebook must have some targeting. So when choosing a targeting for your campaign inside the Facebook Ads Manager UI, you just type a keyword and a dropdown menu appears with suggestions for that keyword. The thing is that the number of suggestions is limited to about 30, while infact FB has a much larger list of "interest buckets" for a keyword - a couple of hundred at times. BUT it only displays a maximum of 30. At least that's the limitation when working with the UI. Getting all of the available targeting suggestions can be done only programatically trough the Facebook Marketing API. So I created this simple app, to make it an easy process.
 
-* #### It takes the bot 10 min. vs 4-7 hours for a person from the team
 
 ## How To Use
-1. **Insert the Id's of the ad accounts you would like to get the invoices of into the Database.**
-       ![](gifs/add_account.gif)
-
-2. **Add the VAT info.**
-   - once inserted, the data is persisted in the app - so you don't have to configure it every time
-     ![](gifs/vat_info.gif)
-
-3 **Choose your mode**
-  * **Fully automated mode**
-    - If you want to process all accounts in the database - use this method - runs the bot in a single click.
-    
-      ![](gifs/fast_invoice.gif)
-      
-  * **Manual mode**
-    - Use this mode if you want to run the bot for specific accounts only, or when you want to manipulate the bot in real time.   
-    
-      ![](gifs/manual_invoice.gif)
-    
-    
-
-
-
-## Project Workflow
-Here, I'm outlining very briefly the phases that the project went trough from start to finish.
-
-### Phase 1 - Manipulating the browser programatically - SELENIUM
-First I needed a tool to automate browser navigation - this is where I used Selenium - one of the most popular libraries for software testing and browser automation. I used it to run Chrome in headless mode. I also used Selenium for navigation and scraping of the DOM.
+1. **Cenerate an access token**
+   - Go to https://developers.facebook.com/ and create an account (if you don't have one). Create a FB app to access the API - info here https://developers.facebook.com/docs/development/ . Go to the Graph API Explorer and generate your access token.
+       
+2. **Add the token and use the app.**
+  - ![](gifs/audience_app.gif)
   
-### Phase 2 - Structuring scraped data - PANDAS
-Next I had to organize the data that I scraped in a meaningfull way. Using Excel Tables was very appropriate. I used the Pandas library, which is the right tools for this kind of operations.
 
-### Phase 3 - Persisting data - SQLite
-I needed a way to store data - to achieve real automation. So I used SQlite because it's embedded and self-contained. Making it easy to be packaged inside the app.
+3. **Choose your mode**
+    * **Standart keyword mode**
+      - Get targeting options based on your keyword
+      
+    * **Suggestion mode**
+      - Use this mode to get suggestions for targeting options outside of your keyword, but that are related to it.
+      - **!** Currently FB has some issues with that service, so it might not work currently.
+      
 
-### Phase 4 - Making the functionality available to people with no coding skills - KIVY
-Now it was the time to create a real usable app out of all that functionality. I decided to use KIVY - since I had some previous experience with it. The main perks were that it was possible to build a simple but intuitive interface and also to package the whole thing into a single executable file, so that others can use it on their PC. There are a lot of functionalities with this framework, which were quite handy.
-
-### Phase 5 - Distributing the app - PyInstaller
-I used PyInstaller to package all of the modules and files and make them executable through a single .exe file.
 
 ## Project Structure
+I used PyInstaller to package all of the modules and files and make them executable through a single .exe file.
+
 ```
-📦 Invoices_App
+📦 AudienceApp
 ├─ .gitignore
-├─ App_exe
-│  └─ InvoicesAPP.spec
+├─ .idea
+|
+├─ App_executable
+│  └─ Audience_App.zip
 ├─ README.md
-├─ app.py
-├─ controller.py
-├─ gifs   
+├─ controller
+│  └─ controller.py
+├─ gifs
+│  └─ audience_app.gif
 ├─ model
+│  ├─ database.db
 │  └─ model.py
 ├─ modules
-│  ├─ dates.py
-|  ├─ dir_maker.py
-|  ├─ table_tool.py
-│  └─ webdriver.py
-├─ requirements.txt
-├─ security
-│  └─ encryption.py
-└─ views
-   ├─ __init__.py
-   ├─ accounts_menu.kv
-   ├─ add_account.kv
-   ├─ fast_flow.kv
-   ├─ main.py
-   ├─ main_menu.kv
-   ├─ resources
-   │  ├─ background
-   │  │  ├─ Untitled-1.psd
-   │  │  ├─ app_bg.png
-   │  │  ├─ app_bg_1.png
-   │  │  ├─ app_bg_2.png
-   │  │  ├─ app_bg_3.png
-   │  │  ├─ app_bg_4.png
-   │  │  ├─ f6f57aa2-abstract-yellow-background.jpg
-   │  │  └─ yellow_bg.png
-   │  ├─ buttons
-   │  │  ├─ 16926.eps
-   │  │  ├─ 16926.jpg
-   │  │  ├─ 16926.psd
-   │  │  ├─ Accounts.png
-   │  │  ├─ FAST_FLOW.png
-   │  │  ├─ Manual.png
-   │  │  └─ VAT.png
-   │  └─ icons
-   │     ├─ 1260673.png
-   │     ├─ invoices-icon-18829.png
-   │     └─ invoices.ico
-   └─ vat_info.kv
+│  └─ fb_api.py
+└─ view
+      ├─ app.py
+      ├─ audience.kv
+      ├─ menu.kv
+      ├─ resources
+      │  ├─ 175-1755232_create-icons-from-png-jpg-images-online-password.png
+      │  ├─ 28152761935f3b72fbefd012fd2fbc78.psd
+      |  ├─ 5360128.ai
+      │  ├─ 5360128.psd
+      │  ├─ 5360129.eps
+      │  ├─ 5360130.jpg
+      │  ├─ Fonts.txt
+      │  ├─ background
+      |  |   ├─ 5556661.jpg
+      |  |   ├─ 5556662.ai
+      │  │   ├─ 5556667.eps
+      │  │   └─ BACKGROUND.png
+      │  ├─ buttons
+      |  |   ├─ AUDIENCE_TOOL.png
+      |	 |   ├─ AUDIENCE_TOOL_PRESSED.png
+      |	 |   ├─ Clone.png
+      |	 |   ├─ Dark.png
+      |	 |   ├─ Drone.png
+      │  │   ├─ SEARCH.png
+      │  │   ├─ SEARCH_PRESSED.png
+      │  │   ├─ TOKEN_MANAGER.png
+      │  │   ├─ TOKEN_MANAGER_PRESSED.png
+      │  │   └─ Vader.png
+      │  ├─ icons
+      │  │  ├─ logo.ico
+      │  │  └─ logo.png
+      │  ├─ music
+      │  │  ├─ 28152761935f3b72fbefd012fd2fbc78.png
+      │  │  ├─ saber.mp3
+      │  │  └─ star_wars.mp3
+      │  └─ password.jpg
+      └─ token.kv
 ```
 ©generated by [Project Tree Generator](https://woochanleee.github.io/project-tree-generator)
