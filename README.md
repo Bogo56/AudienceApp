@@ -11,22 +11,21 @@
     <img src="https://img.shields.io/badge/Made%20with-Python-blue"
          alt="Gitter">
   </a>
-  <a href="https://img.shields.io/tokei/lines/github/Bogo56/AdCapture_bot">
-      <img src="https://img.shields.io/tokei/lines/github/Bogo56/AdCapture_bot">
+  <a href="https://img.shields.io/tokei/lines/github/Bogo56/AudienceApp">
+      <img src="https://img.shields.io/tokei/lines/github/Bogo56/AudienceApp">
   </a>
-  <a href="https://img.shields.io/github/languages/count/Bogo56/AdCapture_bot?color=f">
-    <img src="https://img.shields.io/github/languages/count/Bogo56/AdCapture_bot?color=f">
+  <a href="https://img.shields.io/github/languages/count/Bogo56/AudienceApp?color=f">
+    <img src="https://img.shields.io/github/languages/count/Bogo56/AudienceApp?color=f">
   </a>
-  <a href="https://badgen.net/github/commits/Bogo56/AdCapture_bot">
-    <img src="https://badgen.net/github/commits/Bogo56/AdCapture_bot">
+  <a href="https://badgen.net/github/commits/Bogo56/AudienceApp">
+    <img src="https://badgen.net/github/commits/Bogo56/AudienceApp">
   </a>
 </p>
 
 <p align="center">
   <a href="#about-the-project">About The Project</a> •
-  <a href="#description-of-the-problem">Description of the problem</a> •
+  <a href="#description">Description</a> •
   <a href="#how-to-use">How to use</a> •
-  <a href="#project-workflow">Project Workflow</a> •
   <a href="#project-structure">Project Structure</a> 
 </p>
 
@@ -52,7 +51,7 @@ This is a very simple project, that I created. **The purpose of the app was to i
 
 * If you want you can download and unzip the app on your machine. The path to the executable is located at `dist/AudienceAPP/AudienceAPP.exe`
 
-## Description of the project
+## Description
 Each campaign in Facebook must have some targeting. So when choosing a targeting for your campaign inside the Facebook Ads Manager UI, you just type a keyword and a dropdown menu appears with suggestions for that keyword. The thing is that the number of suggestions is limited to about 30, while infact FB has a much larger list of "interest buckets" for a keyword - a couple of hundred at times. BUT it only displays a maximum of 30. At least that's the limitation when working with the UI. Getting all of the available targeting suggestions can be done only programatically trough the Facebook Marketing API. So I created this simple app, to make it an easy process.
 
 
